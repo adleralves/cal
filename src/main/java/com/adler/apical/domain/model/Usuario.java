@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Size;
 
 
 /**
@@ -18,18 +19,22 @@ public class Usuario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
+    @Size(max = 20)
     private String login;
+    
+    @Size(max = 20)
     private String senha;
-    private Long acessos_id;
+    
+    private Acessos acessos;
 
     public Usuario() {
     }
 
-    public Usuario(Long id, String login, String senha, Long acessos_id) {
+    public Usuario(Long id, String login, String senha, Acessos acessos) {
         this.id = id;
         this.login = login;
         this.senha = senha;
-        this.acessos_id = acessos_id;
+        this.acessos = acessos;
     }
 
     public Long getId() {
@@ -56,12 +61,12 @@ public class Usuario {
         this.senha = senha;
     }
 
-    public Long getAcessos_id() {
-        return acessos_id;
+    public Acessos getAcessos_id() {
+        return acessos;
     }
 
-    public void setAcessos_id(Long acessos_id) {
-        this.acessos_id = acessos_id;
+    public void setAcessos_id(Acessos acessos) {
+        this.acessos = acessos;
     }
 
     @Override
