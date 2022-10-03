@@ -24,17 +24,14 @@ public class Usuario {
     
     @Size(max = 20)
     private String senha;
-    
-    private Acessos acessos;
 
     public Usuario() {
     }
 
-    public Usuario(Long id, String login, String senha, Acessos acessos) {
+    public Usuario(Long id, String login, String senha) {
         this.id = id;
         this.login = login;
         this.senha = senha;
-        this.acessos = acessos;
     }
 
     public Long getId() {
@@ -59,14 +56,6 @@ public class Usuario {
 
     public void setSenha(String senha) {
         this.senha = senha;
-    }
-
-    public Acessos getAcessos_id() {
-        return acessos;
-    }
-
-    public void setAcessos_id(Acessos acessos) {
-        this.acessos = acessos;
     }
 
     @Override
