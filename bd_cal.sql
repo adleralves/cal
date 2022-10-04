@@ -6,16 +6,15 @@ use aa_api_teste;
 
 create table usuario (
     id bigint auto_increment,
-    nome varchar(30) not null,
     login varchar(20) not null,
     senha varchar(60) not null,
     primary key (id)
 );
 
-insert into usuario(nome, login, senha) values
-("Adler Alves", "adler", "123"),
-("Daniely Valente", "dani", "123"),
-("Brunos Souza Almeida", "brunos", "123")
+insert into usuario(login, senha) values
+("adler", "123"),
+("dani", "123"),
+("brunos", "123")
 
 # Tabela Sala
 

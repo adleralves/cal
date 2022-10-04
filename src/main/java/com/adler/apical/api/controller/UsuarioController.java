@@ -1,14 +1,24 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.adler.apical.api.controller;
+
+import com.adler.apical.domain.model.Usuario;
+import com.adler.apical.domain.repository.UsuarioRepository;
+import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  *
- * @author devsys-a
+ * @author adler
  */
+@RestController
 public class UsuarioController {
-    
+
+    @Autowired
+    private UsuarioRepository usuarioRepository;
+
+    @GetMapping("/usuario")
+    public List<Usuario> list() {
+        return usuarioRepository.findAll();
+    }
 }

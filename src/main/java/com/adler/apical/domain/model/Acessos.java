@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 /**
  *
@@ -17,9 +19,13 @@ public class Acessos {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-    private Sala sala;
-    
+    @ManyToOne
+    @JoinColumn(name = "usuario_id", referencedColumnName = "id")
     private Usuario usuario;
+    
+    @ManyToOne
+    @JoinColumn(name = "sala_id", referencedColumnName = "id")
+    private Sala sala;
     
     private boolean verificacao;
 
