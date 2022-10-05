@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
@@ -54,6 +55,21 @@ public class UsuarioController {
     @ResponseStatus(HttpStatus.CREATED)
     public Usuario adicionar(@Valid @RequestBody Usuario usuario) {
         return usuarioService.salvar(usuario);
+    }
+    
+    // Endpoint para editar usuario
+    @PutMapping("/usuarios/{usuarioID}")
+    public ResponseEntity<Usuario> editar(@Valid @PathVariable Long usuarioID,
+                                          @RequestBody Usuario usuario) {
+        
+        //Verifica se o usuario existe
+        if(!usuarioRepository.existsById(usuarioID)) {
+            return ResponseEntity.notFound().build();
+        }
+        
+        usuario.setId(usuarioID);
+        usuario = usuarioService.salvar(usuario);
+        return ResponseEntity.ok(usuario);
     }
 
     // Endpoint para excluir usuario
