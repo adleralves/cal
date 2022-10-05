@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.adler.apical.api.controller;
 
 import com.adler.apical.domain.model.Sala;
@@ -15,7 +10,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- *
+ * Este controller é feito apenas para o hardware receber o estado da sala, se
+ * esta aberta ou fechada
  * @author adler
  */
 @RestController
@@ -24,6 +20,7 @@ public class SalaController {
     @Autowired
     private SalaRepository salaRepository;
     
+    //Busca a sala pelo ID
     @GetMapping("/sala/{salaID}")
     public ResponseEntity<Sala> listar(@PathVariable Long salaID) {
         Optional<Sala> sala = salaRepository.findById(salaID);
