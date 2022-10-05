@@ -19,6 +19,8 @@ public class Acessos {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
+    private boolean verificacao;
+    
     @ManyToOne
     @JoinColumn(name = "usuario_id", referencedColumnName = "id")
     private Usuario usuario;
@@ -26,8 +28,6 @@ public class Acessos {
     @ManyToOne
     @JoinColumn(name = "sala_id", referencedColumnName = "id")
     private Sala sala;
-    
-    private boolean verificacao;
 
     public Acessos() {
         

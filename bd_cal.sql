@@ -14,7 +14,7 @@ create table usuario (
 insert into usuario(login, senha) values
 ("adler", "123"),
 ("dani", "123"),
-("brunos", "123")
+("brunos", "123");
 
 # Tabela Sala
 
@@ -28,7 +28,7 @@ create table sala(
 insert into sala(nome, estado) values
 ("61", false),
 ("62", false),
-("64", false)
+("64", false);
 
 # Tabela Acessos
 
