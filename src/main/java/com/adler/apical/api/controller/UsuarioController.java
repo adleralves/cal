@@ -22,19 +22,22 @@ public class UsuarioController {
 
     @Autowired
     private UsuarioRepository usuarioRepository;
-    
+
     @Autowired
     private UsuarioService usuarioService;
 
+    // Endpoint listando todos usuarios
+    
     @GetMapping("/usuario")
     public List<Usuario> listar() {
         return usuarioRepository.findAll();
     }
+
+    // Endpoint para adicionar novo usuario
     
     @PostMapping("/new")
     @ResponseStatus(HttpStatus.CREATED)
     public Usuario adicionar(@Valid @RequestBody Usuario usuario) {
-        
         return usuarioService.salvar(usuario);
     }
 }

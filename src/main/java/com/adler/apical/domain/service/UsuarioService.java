@@ -16,11 +16,15 @@ public class UsuarioService {
     @Autowired
     private UsuarioRepository usuarioRepository;
     
+    //Método salva usuario(pode ser para novo usuario, ou editar0
+    
     public Usuario salvar(Usuario usuario) {
         return usuarioRepository.save(usuario);
     }
     
-    public void excluir(Long clienteId) {
-        usuarioRepository.deleteById(clienteId);
+    //Método deleta o usuario com o id selecionado
+    
+    public void excluir(Long usuarioId) {
+        usuarioRepository.deleteById(usuarioId);
     }
 }
