@@ -38,7 +38,7 @@ public class UsuarioController {
     }
 
     // Endpoint que lista por id
-    @GetMapping("usuarios/{usuarioID}")
+    @GetMapping("/usuarios/{usuarioID}")
     public ResponseEntity<Usuario> buscar(@PathVariable Long usuarioID) {
         Optional<Usuario> usuario = usuarioRepository.findById(usuarioID);
 
@@ -51,7 +51,7 @@ public class UsuarioController {
     }
 
     // Endpoint para adicionar novo usuario
-    @PostMapping("/new")
+    @PostMapping("/usuarios/criar")
     @ResponseStatus(HttpStatus.CREATED)
     public Usuario adicionar(@Valid @RequestBody Usuario usuario) {
         return usuarioService.salvar(usuario);
