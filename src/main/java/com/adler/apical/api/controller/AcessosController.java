@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- *
+ * Controller para criar/editar e excluir acesso dos laboratorios
  * @author adler
  */
 @RestController

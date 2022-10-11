@@ -1,0 +1,79 @@
+@startuml
+class com.adler.apical.ApiCalApplication
+class com.adler.apical.api.controller.AcessosController {
+    +List<Acessos> list()
+    +Acessos criar(@RequestBody Acessos acesso)
+    +ResponseEntity<Acessos> editar(@Valid @PathVariable Long acessoID @RequestBody Acessos acesso)
+    +ResponseEntity<Void> excluir(@PathVariable Long acessoID)
+}
+class com.adler.apical.api.controller.SalaController {
+    +ResponseEntity<Sala> listar(@PathVariable Long salaID)
+
+}
+class com.adler.apical.api.controller.UsuarioController {
+    +public List<Usuario> listar()
+    +ResponseEntity<Usuario> buscar(@PathVariable Long usuarioID)
+    +Usuario adicionar(@Valid @RequestBody Usuario usuario)
+    +ResponseEntity<Usuario> editar(@Valid @PathVariable Long usuarioID @RequestBody Usuario usuario)
+    +ResponseEntity<Void> excluir(@PathVariable Long usuarioID)
+}
+class com.adler.apical.domain.model.Acessos {
+    -long id
+    -boolean verificacao
+    -Usuario usuario
+    -Sala sala
+
+    + Contructors()
+    + Getter´s and Setter´s()
+    + int hashCode()
+    + boolean equals()
+}
+class com.adler.apical.domain.model.Sala {
+    -long id
+    -String nome
+    -boolean estado
+
+    + Contructors()
+    + Getter´s and Setter´s()
+    + int hashCode()
+    + boolean equals()
+}
+class com.adler.apical.domain.model.Usuario {
+    -long id
+    -String login
+    -String senha
+
+    + Contructors()
+    + Getter´s and Setter´s()
+    + int hashCode()
+    + boolean equals()
+}
+class com.adler.apical.domain.service.AcessoService {
+    +Acessos salvar(Acessos acesso)
+    +void excluir(Long acessoId)
+}
+class com.adler.apical.domain.service.UsuarioService {
+    +Usuario salvar(Usuario usuario)
+    +void excluir(Long usuarioId)
+}
+class org.springframework.boot.SpringApplication
+interface com.adler.apical.domain.repository.AcessosRepository
+interface com.adler.apical.domain.repository.SalaRepository
+interface com.adler.apical.domain.repository.UsuarioRepository
+com.adler.apical.ApiCalApplication ..> org.springframework.boot.SpringApplication
+com.adler.apical.api.controller.AcessosController ..> com.adler.apical.domain.model.Acessos
+com.adler.apical.api.controller.AcessosController ..> com.adler.apical.domain.service.AcessoService
+com.adler.apical.api.controller.AcessosController ..> com.adler.apical.domain.repository.AcessosRepository
+com.adler.apical.api.controller.SalaController ..> com.adler.apical.domain.model.Sala
+com.adler.apical.api.controller.SalaController ..> com.adler.apical.domain.repository.SalaRepository
+com.adler.apical.api.controller.UsuarioController ..> com.adler.apical.domain.model.Usuario
+com.adler.apical.api.controller.UsuarioController ..> com.adler.apical.domain.service.UsuarioService
+com.adler.apical.api.controller.UsuarioController ..> com.adler.apical.domain.repository.UsuarioRepository
+com.adler.apical.domain.service.AcessoService ..> com.adler.apical.domain.model.Acessos
+com.adler.apical.domain.service.AcessoService ..> com.adler.apical.domain.repository.AcessosRepository
+com.adler.apical.domain.service.UsuarioService ..> com.adler.apical.domain.model.Usuario
+com.adler.apical.domain.service.UsuarioService ..> com.adler.apical.domain.repository.UsuarioRepository
+com.adler.apical.domain.repository.AcessosRepository ..> com.adler.apical.domain.model.Acessos
+com.adler.apical.domain.repository.SalaRepository ..> com.adler.apical.domain.model.Sala
+com.adler.apical.domain.repository.UsuarioRepository ..> com.adler.apical.domain.model.Usuario
+@enduml

@@ -16,7 +16,7 @@ public class UsuarioService {
     @Autowired
     private UsuarioRepository usuarioRepository;
     
-    //Método salva usuario(pode ser para novo usuario, ou editar0
+    //Método salva usuario(pode ser para novo usuario, ou editar)
     
     public Usuario salvar(Usuario usuario) {
         return usuarioRepository.save(usuario);

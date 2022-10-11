@@ -19,7 +19,8 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- *
+ * Este controller é feito apenas para criar, editar e deletar contas do
+ * banco de dados
  * @author adler
  */
 @RestController
