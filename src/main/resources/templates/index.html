@@ -1,15 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
-    <title>Document</title>
-</head>
-<body>
-    <div class="container">
-        <h1>Adler Alves</h1>   
-    </div>
-</body>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
+        <title>Pagina Principal</title>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Lista</h1>
+            <table class="table table-borderless table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Login</th>
+                        <th scope="col">Acessos</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr scope="row" th:each="acessos : ${acessoList}">
+                        <td th:text="${acessos.id}"></td>
+                        <td th:text="${acessos.verificacao}"></td>
+                        <td th:text="${acessos.usuario}"></td>
+                        <td th:text="${acessos.sala}"></td>
+                    </tr>
+                    <!--<tr>
+                        <th scope="row">2</th>
+                        <td>Jacob</td>
+                        <td>Thornton</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td>Larry the Bird</td>
+                        <td>Adler</td>
+                    </tr>-->
+                </tbody>
+            </table>
+
+        </div>
+    </body>
 </html>
