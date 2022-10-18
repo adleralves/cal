@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/assets/fragmento_style.css">
+        <title>Pagina Principal</title>
+    </head>
+    <body>
+        <header class="container" th:fragment="cabeçalho">
+            <nav class="navbar navbar-light">
+                <img class="navbar-brand img-fluid" width="400" src="../images/logo-senai.png" />
+                <ul class="nav justify-content-end">
+                    <li class="nav-item">
+                        <p>Controle de Acessos á Laboratórios</p>
+                    </li>
+                    <li class="nav-item">
+                        <button type="button" class="btn btn-danger">
+                            Sair
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+    </body>
+</html>
