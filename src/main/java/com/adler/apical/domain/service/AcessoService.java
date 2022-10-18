@@ -3,12 +3,16 @@ package com.adler.apical.domain.service;
 import com.adler.apical.domain.model.Acessos;
 import com.adler.apical.domain.repository.AcessosRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author adler
  */
+
+@Service
 public class AcessoService {
+    
     @Autowired
     private AcessosRepository acessosRepository;
     

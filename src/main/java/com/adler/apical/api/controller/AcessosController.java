@@ -38,7 +38,7 @@ public class AcessosController {
     @PostMapping("/acessos/criar")
     @ResponseStatus(HttpStatus.CREATED)
     public Acessos criar(@RequestBody Acessos acesso) {
-        return acessosRepository.save(acesso);
+        return acessoService.salvar(acesso);
     }
     
         // Endpoint para editar acesso

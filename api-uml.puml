@@ -3,7 +3,7 @@ class com.adler.apical.ApiCalApplication
 class com.adler.apical.api.controller.AcessosController {
     +List<Acessos> list()
     +Acessos criar(@RequestBody Acessos acesso)
-    +ResponseEntity<Acessos> editar(@Valid @PathVariable Long acessoID @RequestBody Acessos acesso)
+    +ResponseEntity<Acessos> editar(@Valid @PathVariable Long acessoID)
     +ResponseEntity<Void> excluir(@PathVariable Long acessoID)
 }
 class com.adler.apical.api.controller.SalaController {
@@ -14,7 +14,7 @@ class com.adler.apical.api.controller.UsuarioController {
     +public List<Usuario> listar()
     +ResponseEntity<Usuario> buscar(@PathVariable Long usuarioID)
     +Usuario adicionar(@Valid @RequestBody Usuario usuario)
-    +ResponseEntity<Usuario> editar(@Valid @PathVariable Long usuarioID @RequestBody Usuario usuario)
+    +ResponseEntity<Usuario> editar(@Valid @PathVariable Long usuarioID)
     +ResponseEntity<Void> excluir(@PathVariable Long usuarioID)
 }
 class com.adler.apical.domain.model.Acessos {
