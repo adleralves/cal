@@ -1,38 +1,45 @@
 <!DOCTYPE html>
 <html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="//netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="/assets/index_style.css">
-        <title>Pagina Principal</title>
-    </head>
-    <body>
-        <div th:replace="fragmentos"></div>
-        <div class="container">
-            <h1>Lista</h1>
-            <table class="table table-borderless table-striped">
-                <thead>
-                    <tr>
-                        <th scope="col">*</th>
-                        <th scope="col">ID</th>
-                        <th scope="col">Login</th>
-                        <th scope="col">Laboratorio</th>
-                    </tr>
-                </thead>
-                <tbody >
-                    <tr scope="row" th:each="acessos : ${acessoList}"
-                                    th:if="${acessos.verificacao} == true">
-                        <td th:text="${acessos.verificacao}"></td>
-                        <td th:text="${acessos.usuario.id}"></td>
-                        <td th:text="${acessos.usuario.login}"></td>
-                        <td th:text="${acessos.sala.nome}">
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-
-        </div>
-    </body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="//netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/assets/index_style.css" />
+    <title>Pagina Principal</title>
+  </head>
+  <body>
+    <div th:replace="fragmentos"></div>
+    <div class="container">
+      <h1>Lista</h1>
+      <table class="table table-borderless table-striped">
+        <thead>
+          <tr>
+            <th scope="col"><span class="glyphicon glyphicon-list"></span></th>
+            <th scope="col">ID</th>
+            <th scope="col">Login</th>
+            <th scope="col">Laboratorio</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            scope="row"
+            th:each="acessos : ${acessoList}"
+            th:if="${acessos.verificacao} == true"
+          >
+            <td>
+              <span class="glyphicon glyphicon-pencil"></span>
+              <span class="glyphicon glyphicon-trash"></span>
+            </td>
+            <td th:text="${acessos.usuario.id}"></td>
+            <td th:text="${acessos.usuario.login}"></td>
+            <td th:text="${acessos.sala.nome}"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </body>
 </html>
