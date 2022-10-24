@@ -4,7 +4,8 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
+        <link href="//netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="/assets/index_style.css">
         <title>Pagina Principal</title>
     </head>
     <body>
@@ -14,26 +15,21 @@
             <table class="table table-borderless table-striped">
                 <thead>
                     <tr>
+                        <th scope="col">*</th>
+                        <th scope="col">ID</th>
                         <th scope="col">Login</th>
-                        <th scope="col">Acessos</th>
+                        <th scope="col">Laboratorio</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr scope="row" th:each="acessos : ${acessoList}">
+                <tbody >
+                    <tr scope="row" th:each="acessos : ${acessoList}"
+                                    th:if="${acessos.verificacao} == true">
                         <td th:text="${acessos.verificacao}"></td>
+                        <td th:text="${acessos.usuario.id}"></td>
                         <td th:text="${acessos.usuario.login}"></td>
-                        <td th:text="${acessos.sala.nome}"></td>
+                        <td th:text="${acessos.sala.nome}">
+                        </td>
                     </tr>
-                    <!--<tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>Larry the Bird</td>
-                        <td>Adler</td>
-                    </tr>-->
                 </tbody>
             </table>
 
