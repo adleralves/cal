@@ -18,14 +18,10 @@
                 <h1>Novo usuário</h1>
             </div>
             <br>
-            <form method="post" action="criarUsuario" th:object="${usuario}" class="form-signin w-25 m-auto was-validated">
+            <form method="post" action="criarLab" th:object="${sala}" class="form-signin w-50 m-auto was-validated">
                 <div class="mb-3 form-group">
-                    <label for="loginUsuario">Digite o novo login</label>
-                    <input th:field="*{login}" type="text" class="form-control" id="loginUsuario" placeholder="Login" aria-label="Login" aria-describedby="basic-addon1" required>
-                </div>
-                <div class="mb-3 form-group">
-                    <label for="senhaUsuario">Digite a senha</label>
-                    <input th:field="*{senha}" type="password" class="form-control" id="senhaUsuario" placeholder="Senha" required>
+                    <label for="nomeLab">Digite o nome do laboratório</label>
+                    <input th:field="*{nome}" type="text" class="form-control" id="nomeLab" placeholder="Login" aria-label="Login" aria-describedby="basic-addon1" required>
                 </div>
                 <button class="w-100 btn btn-lg btn-danger teste" type="submit">Criar</button>
             </form>

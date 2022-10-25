@@ -51,14 +51,14 @@ public class WebController {
         return mv;
     }
     
-    @GetMapping("/newLaboratorio")
+    @GetMapping("/newLab")
     public ModelAndView cadastroAluno(@ModelAttribute Sala sala) {
         ModelAndView mv = new ModelAndView("forms/labForm");
         mv.addObject("sala", sala);
         return mv;
     }
 
-    @PostMapping("criarLaboratorio")
+    @PostMapping("criarLab")
     public ModelAndView criarLab(Sala sala) {
         ModelAndView mv = new ModelAndView();
         mv.setViewName("redirect:index");
