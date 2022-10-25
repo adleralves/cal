@@ -3,3 +3,7 @@ a, a:link, a:visited, a:hover, a:active {
     color: black  !important;
     background-color: white !important;
 }
+
+.text-menu {
+    font-size: 1.25em; 
+}

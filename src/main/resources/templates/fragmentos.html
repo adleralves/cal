@@ -9,19 +9,19 @@
         <title>Pagina Principal</title>
     </head>
     <body>
-        <header class="container" th:fragment="cabeçalho">
+        <header class="container" th:fragment="cabecalho">
             <nav class="navbar navbar-light">
                 <a th:href="@{/admin}">
                     <img class="navbar-brand img-fluid" width="400" src="../images/logo-senai.png" />
                 </a>
                 <ul class="nav justify-content-end">
                     <li class="nav-item">
-                        <a th:href="@{/cadastro}">
+                        <a class="text-menu" th:href="@{/newUsuario}">
                             Novo usuário
                         </a>
                     </li>                    
                     <li class="nav-item">
-                        <a>
+                        <a class="text-menu" th:href="@{/newSala}">
                             Novo laboratório
                         </a>
                     </li>
