@@ -1,0 +1,7 @@
+button {
+    font-size: 1.5em !important;
+}
+
+input, input::placeholder {
+    font-size: 1.25em !important;
+}
