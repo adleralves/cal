@@ -11,10 +11,10 @@
     <body>
         <header class="container" th:fragment="cabeçalho">
             <nav class="navbar navbar-light">
-                <img class="navbar-brand img-fluid" width="400" src="../images/logo-senai.png" />
+                <a th:href="@{/admin}">
+                    <img class="navbar-brand img-fluid" width="400" src="../images/logo-senai.png" />
+                </a>
                 <ul class="nav justify-content-end">
-                    <li class="nav-item">
-                    </li>
                     <li class="nav-item">
                         <button type="button" class="btn btn-lg btn-danger">
                             SAIR
