@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+            href="//netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+            rel="stylesheet"
+            />
+        <link rel="stylesheet" href="/assets/usuarioF_style.css" />
+        <title>Novo acesso</title>
+    </head>
+    <body>
+        <div th:replace="fragmentos"></div>
+        <div class="container">
+            <div class="border-bottom">
+                <h1>Novo acesso</h1>
+            </div>
+            <br>
+            <!--<form method="post" action="criarAcesso" th:object="${acessos}" class="form-signin w-50">
+                <label for="datalistaUsuarios" class="form-label">Informe o usuario</label>
+                <input class="form-control" list="usuariosLista" id="datalistaUsuarios" placeholder="Digite o login">
+                <datalist id="usuariosLista">
+                    <option th:each="acessos : ${acessoList}" th:value="${acessos.id}" th:label="${acessos.id}" >
+                </datalist>
+                <button class="w-100 btn btn-lg btn-danger teste" type="submit">Criar</button>
+            </form>
+            <table class="table w-50 ">
+                <thead>
+                    <tr>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Estado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr
+                        scope="row"
+                        th:each="sala : ${salaList}"
+                        >
+                        <td th:text="${sala.nome}"></td>
+                        <td>
+                            <span th:if="${sala.estado} == false">Fechado</span>
+                            <span th:if="${sala.estado} == true">Aberto</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>-->
+        </div>
+    </body>
+</html>

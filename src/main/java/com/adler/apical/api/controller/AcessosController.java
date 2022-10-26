@@ -1,7 +1,10 @@
 package com.adler.apical.api.controller;
 
 import com.adler.apical.domain.model.Acessos;
+import com.adler.apical.domain.model.Sala;
+import com.adler.apical.domain.model.Usuario;
 import com.adler.apical.domain.repository.AcessosRepository;
+import com.adler.apical.domain.repository.UsuarioRepository;
 import com.adler.apical.domain.service.AcessoService;
 import java.util.List;
 import javax.validation.Valid;
@@ -10,47 +13,58 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  * Controller para criar/editar e excluir acesso dos laboratorios
+ *
  * @author adler
  */
 @RestController
 public class AcessosController {
-    
+
     @Autowired
     private AcessosRepository acessosRepository;
-    
+
+    @Autowired
+    private AcessosRepository usuarioRepository;
+
+    @Autowired
+    private AcessosRepository salaRepository;
+
     @Autowired
     private AcessoService acessoService;
-    
+
     @GetMapping("/acessos")
     public List<Acessos> list() {
         return acessosRepository.findAll();
     }
-    
+
     @PostMapping("/acessos/criar")
     @ResponseStatus(HttpStatus.CREATED)
     public Acessos criar(@RequestBody Acessos acesso) {
         return acessoService.salvar(acesso);
     }
-    
-        // Endpoint para editar acesso
+
+    // Endpoint para editar acesso
     @PutMapping("/acessos/{acessoID}")
     public ResponseEntity<Acessos> editar(@Valid @PathVariable Long acessoID,
-                                          @RequestBody Acessos acesso) {
-        
+            @RequestBody Acessos acesso) {
+
         //Verifica se o acesso existe
-        if(!acessosRepository.existsById(acessoID)) {
+        if (!acessosRepository.existsById(acessoID)) {
             return ResponseEntity.notFound().build();
         }
-        
+
         acesso.setId(acessoID);
         acesso = acessoService.salvar(acesso);
         return ResponseEntity.ok(acesso);
@@ -59,7 +73,7 @@ public class AcessosController {
     // Endpoint para excluir acesso
     @DeleteMapping("/acessos/{acessoID}")
     public ResponseEntity<Void> excluir(@PathVariable Long acessoID) {
-        
+
         //Verifica se acesso existe ou não
         if (!acessosRepository.existsById(acessoID)) {
             return ResponseEntity.notFound().build();
@@ -67,5 +81,34 @@ public class AcessosController {
 
         acessoService.excluir(acessoID);
         return ResponseEntity.noContent().build();
+    }
+
+    /*
+    Enviando e trabalhando dados com o Thymeleaf/HTML
+     */
+    @GetMapping("/admin")
+    public ModelAndView listarAcessos() {
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("index");
+        mv.addObject("acessoList", acessosRepository.findAll());
+        return mv;
+    }
+
+    /*
+    @GetMapping("/newAcesso")
+    public ModelAndView listarAcessoTeste(@ModelAttribute Acessos acessos) {
+        ModelAndView mv = new ModelAndView("forms/acessoForm");
+        mv.addObject("acessos", acessos);
+        return mv;
+    }
+*/
+
+    @GetMapping("/newAcesso")
+    public ModelAndView listarLab() {
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("forms/acessoForm");
+        mv.addObject("salaList", salaRepository.findAll());
+        mv.addObject("usuarioList", usuarioRepository.findAll());
+        return mv;
     }
 }

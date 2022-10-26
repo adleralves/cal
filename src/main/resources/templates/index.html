@@ -12,12 +12,12 @@
         <title>Pagina Principal</title>
     </head>
     <body>
-        <div th:replace="fragmentos"></div>
+        <div th:replace="fragmentos "></div>
         <div class="container">
             <div class="d-flex border-bottom">
                 <h1 class="mr-auto">Lista</h1>
                 <div class="ms-auto">
-                    <a>
+                    <a th:href="@{/newAcesso}">
                         <button type="button" class="btn btn-success btn-lg">Novo acesso</button>
                     </a>
                 </div>

@@ -18,13 +18,39 @@
                 <h1>Novo laboratório</h1>
             </div>
             <br>
-            <form method="post" action="criarLab" th:object="${sala}" class="form-signin w-25 m-auto was-validated">
-                <div class="mb-3 form-group">
-                    <label for="nomeLab">Digite o nome do laboratório</label>
-                    <input th:field="*{nome}" type="text" class="form-control" id="nomeLab" placeholder="Laboratório" aria-label="Laboratório" aria-describedby="basic-addon1" required>
+            <div class="row">
+                <div class="col d-flex justify-content-end">
+                    <form method="post" action="criarLab" th:object="${sala}" class="form-signin w-50 was-validated">
+                        <div class="mb-3 form-group">
+                            <label for="nomeLab">Digite o nome do laboratório</label>
+                            <input th:field="*{nome}" type="text" class="form-control" id="nomeLab" placeholder="Laboratório" aria-label="Laboratório" aria-describedby="basic-addon1" required>
+                        </div>
+                        <button class="w-100 btn btn-lg btn-danger teste" type="submit">Criar</button>
+                    </form>
                 </div>
-                <button class="w-100 btn btn-lg btn-danger teste" type="submit">Criar</button>
-            </form>
+                <div class="col d-flex">
+                    <table class="table w-50 ">
+                        <thead>
+                            <tr>
+                                <th scope="col">Nome</th>
+                                <th scope="col">Estado</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr
+                                scope="row"
+                                th:each="sala : ${salaList}"
+                                >
+                                <td th:text="${sala.nome}"></td>
+                                <td>
+                                    <span th:if="${sala.estado} == false">Fechado</span>
+                                    <span th:if="${sala.estado} == true">Aberto</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </body>
 </html>

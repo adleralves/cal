@@ -11,12 +11,16 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  * Este controller é feito apenas para criar, editar e deletar contas do
@@ -84,5 +88,25 @@ public class UsuarioController {
 
         usuarioService.excluir(usuarioID);
         return ResponseEntity.noContent().build();
+    }
+    
+    /*
+    Enviando e trabalhando dados com o Thymeleaf/HTML
+    */
+    
+    @RequestMapping(value = "/newUsuario", method = { RequestMethod.GET, RequestMethod.POST})
+    public ModelAndView listarUsuario(@ModelAttribute Usuario usuario) {
+        ModelAndView mv = new ModelAndView("forms/usuarioForm");
+        mv.addObject("usuario", usuario);
+        mv.addObject("usuarioList", usuarioRepository.findAll());
+        return mv;
+    }
+
+    @PostMapping("criarUsuario")
+    public ModelAndView criarUsuario(Usuario usuario) {
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("redirect:admin");
+        usuarioRepository.save(usuario);
+        return mv;
     }
 }
