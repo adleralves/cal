@@ -17,18 +17,64 @@
             <div class="border-bottom">
                 <h1>Novo usuário</h1>
             </div>
-            <br>
-            <form method="post" action="criarUsuario" th:object="${usuario}" class="form-signin w-25 m-auto was-validated">
-                <div class="mb-3 form-group">
-                    <label for="loginUsuario">Digite o novo login</label>
-                    <input th:field="*{login}" type="text" class="form-control" id="loginUsuario" placeholder="Login" aria-label="Login" aria-describedby="basic-addon1" required>
+            <br />
+            <div class="row align-items-center">
+                <div class="p-5 col">
+                    <form
+                        method="post"
+                        action="criarUsuario"
+                        th:object="${usuario}"
+                        class="form-signin w-50 m-auto was-validated"
+                        >
+                        <div class="mb-3 form-group">
+                            <label for="loginUsuario">Digite o novo login</label>
+                            <input
+                                th:field="*{login}"
+                                type="text"
+                                class="form-control"
+                                id="loginUsuario"
+                                placeholder="Login"
+                                aria-label="Login"
+                                aria-describedby="basic-addon1"
+                                required
+                                />
+                        </div>
+                        <div class="mb-3 form-group">
+                            <label for="senhaUsuario">Digite a senha</label>
+                            <input
+                                th:field="*{senha}"
+                                type="password"
+                                class="form-control"
+                                id="senhaUsuario"
+                                placeholder="Senha"
+                                required
+                                />
+                        </div>
+                        <button class="w-100 btn btn-lg btn-danger teste" type="submit">
+                            Criar
+                        </button>
+                    </form>
                 </div>
-                <div class="mb-3 form-group">
-                    <label for="senhaUsuario">Digite a senha</label>
-                    <input th:field="*{senha}" type="password" class="form-control" id="senhaUsuario" placeholder="Senha" required>
+                <div class="p-5 col d-flex justify-content-end align-self-center">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">Login</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr
+                                scope="row"
+                                th:each="usuario : ${usuarioList}"
+                                >
+                                <td th:text="${usuario.id}"></td>
+                                <td th:text="${usuario.login}"></td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
-                <button class="w-100 btn btn-lg btn-danger teste" type="submit">Criar</button>
-            </form>
+            </div>
         </div>
     </body>
 </html>

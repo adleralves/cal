@@ -10,6 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
@@ -27,29 +29,37 @@ public class WebController {
     
     @Autowired
     private SalaRepository salaRepository;
+    
+    
+    // Trabalhando com acessos (listando)
 
     @GetMapping("/admin")
-    public ModelAndView listarUsuario() {
+    public ModelAndView listarAcessos() {
         ModelAndView mv = new ModelAndView();
         mv.setViewName("index");
         mv.addObject("acessoList", acessoRepository.findAll());
         return mv;
     }
+    
+    // Trabalhando com usuarios (listando/criando)
 
-    @GetMapping("/newUsuario")
-    public ModelAndView cadastroAluno(@ModelAttribute Usuario usuario) {
+    @RequestMapping(value = "/newUsuario", method = { RequestMethod.GET, RequestMethod.POST})
+    public ModelAndView teste(@ModelAttribute Usuario usuario) {
         ModelAndView mv = new ModelAndView("forms/usuarioForm");
         mv.addObject("usuario", usuario);
+        mv.addObject("usuarioList", usuarioRepository.findAll());
         return mv;
     }
 
     @PostMapping("criarUsuario")
     public ModelAndView criarUsuario(Usuario usuario) {
         ModelAndView mv = new ModelAndView();
-        mv.setViewName("redirect:index");
+        mv.setViewName("redirect:admin");
         usuarioRepository.save(usuario);
         return mv;
     }
+    
+    // Trabalhando com salas (listando/criando)
     
     @GetMapping("/newLab")
     public ModelAndView cadastroAluno(@ModelAttribute Sala sala) {

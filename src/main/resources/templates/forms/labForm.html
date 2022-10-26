@@ -15,13 +15,13 @@
         <div th:replace="fragmentos"></div>
         <div class="container">
             <div class="border-bottom">
-                <h1>Novo usuário</h1>
+                <h1>Novo laboratório</h1>
             </div>
             <br>
-            <form method="post" action="criarLab" th:object="${sala}" class="form-signin w-50 m-auto was-validated">
+            <form method="post" action="criarLab" th:object="${sala}" class="form-signin w-25 m-auto was-validated">
                 <div class="mb-3 form-group">
                     <label for="nomeLab">Digite o nome do laboratório</label>
-                    <input th:field="*{nome}" type="text" class="form-control" id="nomeLab" placeholder="Login" aria-label="Login" aria-describedby="basic-addon1" required>
+                    <input th:field="*{nome}" type="text" class="form-control" id="nomeLab" placeholder="Laboratório" aria-label="Laboratório" aria-describedby="basic-addon1" required>
                 </div>
                 <button class="w-100 btn btn-lg btn-danger teste" type="submit">Criar</button>
             </form>
