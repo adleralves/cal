@@ -18,13 +18,13 @@
                 <h1>Novo usuário</h1>
             </div>
             <br />
-            <div class="row align-items-center">
-                <div class="p-5 col">
+            <div class="row">
+                <div class="col d-flex justify-content-end">
                     <form
                         method="post"
                         action="criarUsuario"
                         th:object="${usuario}"
-                        class="form-signin w-50 m-auto was-validated"
+                        class="form-signin w-50 was-validated"
                         >
                         <div class="mb-3 form-group">
                             <label for="loginUsuario">Digite o novo login</label>
@@ -55,8 +55,8 @@
                         </button>
                     </form>
                 </div>
-                <div class="p-5 col d-flex justify-content-end align-self-center">
-                    <table class="table">
+                <div class="col d-flex">
+                    <table class="table w-50 ">
                         <thead>
                             <tr>
                                 <th scope="col">ID</th>
