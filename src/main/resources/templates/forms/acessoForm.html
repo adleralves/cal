@@ -18,34 +18,44 @@
                 <h1>Novo acesso</h1>
             </div>
             <br>
-            <!--<form method="post" action="criarAcesso" th:object="${acessos}" class="form-signin w-50">
-                <label for="datalistaUsuarios" class="form-label">Informe o usuario</label>
-                <input class="form-control" list="usuariosLista" id="datalistaUsuarios" placeholder="Digite o login">
-                <datalist id="usuariosLista">
-                    <option th:each="acessos : ${acessoList}" th:value="${acessos.id}" th:label="${acessos.id}" >
-                </datalist>
-                <button class="w-100 btn btn-lg btn-danger teste" type="submit">Criar</button>
-            </form>
-            <table class="table w-50 ">
-                <thead>
-                    <tr>
-                        <th scope="col">Nome</th>
-                        <th scope="col">Estado</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr
-                        scope="row"
-                        th:each="sala : ${salaList}"
-                        >
-                        <td th:text="${sala.nome}"></td>
-                        <td>
-                            <span th:if="${sala.estado} == false">Fechado</span>
-                            <span th:if="${sala.estado} == true">Aberto</span>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>-->
+            <div class="col d-flex">
+                <table class="table w-50 ">
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Login</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr
+                            scope="row"
+                            th:each="usuario : ${usuarioList}"
+                            >
+                            <td th:text="${usuario.id}"></td>
+                            <td th:text="${usuario.login}"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col d-flex">
+                <table class="table w-50 ">
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Nome</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr
+                            scope="row"
+                            th:each="sala : ${salaList}"
+                            >
+                            <td th:text="${sala.id}"></td>
+                            <td th:text="${sala.nome}"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </body>
 </html>

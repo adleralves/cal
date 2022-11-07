@@ -36,13 +36,13 @@ public class AcessosController {
     private AcessosRepository acessosRepository;
 
     @Autowired
-    private AcessosRepository usuarioRepository;
-
-    @Autowired
-    private AcessosRepository salaRepository;
+    private UsuarioRepository usuarioRepository;
 
     @Autowired
     private AcessoService acessoService;
+    
+    @Autowired
+    private AcessoService usuarioService;
 
     @GetMapping("/acessos")
     public List<Acessos> list() {
@@ -103,12 +103,21 @@ public class AcessosController {
     }
 */
 
-    @GetMapping("/newAcesso")
-    public ModelAndView listarLab() {
-        ModelAndView mv = new ModelAndView();
-        mv.setViewName("forms/acessoForm");
-        mv.addObject("salaList", salaRepository.findAll());
+    @RequestMapping(value = "/newAcesso", method = { RequestMethod.GET, RequestMethod.POST})
+    public ModelAndView listarAcesso(@ModelAttribute Usuario usuario, @ModelAttribute Sala sala) {
+        ModelAndView mv = new ModelAndView("forms/acessoForm");
         mv.addObject("usuarioList", usuarioRepository.findAll());
+        mv.addObject("salaList", usuarioRepository.findAll());
         return mv;
     }
+
+    /*
+    @PostMapping("criarAcesso")
+    public ModelAndView criarAcesso(Usuario usuario) {
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("redirect:newUsuario");
+        usuarioRepository.save(usuario);
+        return mv;
+    }
+    */
 }

@@ -105,7 +105,7 @@ public class UsuarioController {
     @PostMapping("criarUsuario")
     public ModelAndView criarUsuario(Usuario usuario) {
         ModelAndView mv = new ModelAndView();
-        mv.setViewName("redirect:admin");
+        mv.setViewName("redirect:newUsuario");
         usuarioRepository.save(usuario);
         return mv;
     }

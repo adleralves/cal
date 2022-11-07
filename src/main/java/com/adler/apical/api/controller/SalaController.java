@@ -83,7 +83,7 @@ public class SalaController {
     @PostMapping("criarLab")
     public ModelAndView criarLab(Sala sala) {
         ModelAndView mv = new ModelAndView();
-        mv.setViewName("redirect:admin");
+        mv.setViewName("redirect:newLab");
         salaRepository.save(sala);
         return mv;
     }
