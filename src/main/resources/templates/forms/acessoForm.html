@@ -18,43 +18,22 @@
                 <h1>Novo acesso</h1>
             </div>
             <br>
-            <div class="col d-flex">
-                <table class="table w-50 ">
-                    <thead>
-                        <tr>
-                            <th scope="col">ID</th>
-                            <th scope="col">Login</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr
-                            scope="row"
-                            th:each="usuario : ${usuarioList}"
-                            >
-                            <td th:text="${usuario.id}"></td>
-                            <td th:text="${usuario.login}"></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="col d-flex">
-                <table class="table w-50 ">
-                    <thead>
-                        <tr>
-                            <th scope="col">ID</th>
-                            <th scope="col">Nome</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr
-                            scope="row"
-                            th:each="sala : ${salaList}"
-                            >
-                            <td th:text="${sala.id}"></td>
-                            <td th:text="${sala.nome}"></td>
-                        </tr>
-                    </tbody>
-                </table>
+            <div class="d-flex justify-content-center">
+                <form method="post" action="criarAcesso" th:object="${acessos}" class="form-signin w-50">
+                    <label for="datalistaUsuarios" class="form-label">Informe o usuario</label>
+                    <input class="mb-3 form-control" list="usuariosLista" id="datalistaUsuarios" placeholder="Digite o login">
+                    <datalist id="usuariosLista">
+                        <option th:each="usuario : ${usuarioList}" th:value="${usuario.login}" th:label="${usuario.login}" >
+                    </datalist>
+
+                    <label for="datalistaSala" class="form-label">Informe a sala</label>
+                    <input class="mb-3 form-control" list="salaLista" id="datalistaSala" placeholder="Digite a sala">
+                    <datalist id="salaLista">
+                        <option th:each="sala : ${salaList}" th:value="${sala.nome}" th:label="${sala.nome}" >
+                    </datalist>
+
+                    <button class="mb-3 w-100 btn btn-lg btn-danger teste" type="submit">Criar</button>
+                </form>
             </div>
         </div>
     </body>

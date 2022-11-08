@@ -4,6 +4,7 @@ import com.adler.apical.domain.model.Acessos;
 import com.adler.apical.domain.model.Sala;
 import com.adler.apical.domain.model.Usuario;
 import com.adler.apical.domain.repository.AcessosRepository;
+import com.adler.apical.domain.repository.SalaRepository;
 import com.adler.apical.domain.repository.UsuarioRepository;
 import com.adler.apical.domain.service.AcessoService;
 import java.util.List;
@@ -37,6 +38,9 @@ public class AcessosController {
 
     @Autowired
     private UsuarioRepository usuarioRepository;
+    
+    @Autowired
+    private SalaRepository salaRepository;
 
     @Autowired
     private AcessoService acessoService;
@@ -107,7 +111,7 @@ public class AcessosController {
     public ModelAndView listarAcesso(@ModelAttribute Usuario usuario, @ModelAttribute Sala sala) {
         ModelAndView mv = new ModelAndView("forms/acessoForm");
         mv.addObject("usuarioList", usuarioRepository.findAll());
-        mv.addObject("salaList", usuarioRepository.findAll());
+        mv.addObject("salaList", salaRepository.findAll());
         return mv;
     }
 
