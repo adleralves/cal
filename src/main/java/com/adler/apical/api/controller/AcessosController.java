@@ -110,18 +110,19 @@ public class AcessosController {
     @RequestMapping(value = "/newAcesso", method = { RequestMethod.GET, RequestMethod.POST})
     public ModelAndView listarAcesso(@ModelAttribute Usuario usuario, @ModelAttribute Sala sala) {
         ModelAndView mv = new ModelAndView("forms/acessoForm");
+        mv.addObject("usuario", usuario);
         mv.addObject("usuarioList", usuarioRepository.findAll());
+        mv.addObject("sala", sala);
         mv.addObject("salaList", salaRepository.findAll());
         return mv;
     }
 
-    /*
-    @PostMapping("criarAcesso")
-    public ModelAndView criarAcesso(Usuario usuario) {
+    
+    @PostMapping("/criarAcesso")
+    public ModelAndView criarAcesso(Acessos acesso) {
         ModelAndView mv = new ModelAndView();
-        mv.setViewName("redirect:newUsuario");
-        usuarioRepository.save(usuario);
+        mv.setViewName("redirect:admin");
+        acessosRepository.save(acesso);
         return mv;
     }
-    */
 }
