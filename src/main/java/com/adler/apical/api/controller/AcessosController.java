@@ -119,10 +119,10 @@ public class AcessosController {
 
     
     @PostMapping("/criarAcesso")
-    public ModelAndView criarAcesso(Acessos acesso) {
+    public ModelAndView criarAcesso(Acessos acessos) {
         ModelAndView mv = new ModelAndView();
         mv.setViewName("redirect:admin");
-        acessosRepository.save(acesso);
+        acessosRepository.save(acessos);
         return mv;
     }
 }
