@@ -19,51 +19,27 @@
             </div>
             <br>
             <div class="d-flex justify-content-center">
-                <form method="post" th:action="criarAcesso" th:object="${acessos}" class="form-signin w-50">
-
-                    <div class="p-3 form-group-row">
-                        <label class="col-form-label col-sm-4">Informe o usuario:</label>
-                        <div class="col-sm-8">
-                            <select th:field="*{sala}" class="form-control" required>
-                                <th:block th:each="usuario : ${usuarioList}">
-                                    <option th:text="${usuario.login}" th:value="${usuario.id}" />
-                                </th:block>
-                            </select>
-                        </div>
-                    </div>
-
-                    <!--<label for="datalistaSala" class="form-label">Informe a sala</label>
-                    <input th:field="*{sala}" class="mb-3 form-control" list="salaLista" id="datalistaSala" placeholder="Digite a sala">
-                    <datalist id="salaLista" required>
-                        <select>
-                        <th:block th:each="sala : ${salaList}">
-                            <option th:label="${sala.nome}" th:value="${sala.id}">
-                        </th:block>
-                        </select>
-                    </datalist>-->
+                <form class="form-signin w-50" method="POST" th:action="criarAcesso" th:object="${acessos}">
+                    
+                    <label>Digite o nome do usuario</label>
+                    <select class="form-control">
+                        <option th:each="usuario : ${usuarioList}" th:value="${usuario.id}" th:text="${usuario.login}"></option>
+                    </select>
 
                     <br><br>
 
-                    <div class="p-3 form-group-row">
-                        <label class="col-form-label col-sm-4">Informe a sala:</label>
-                        <div class="col-sm-8">
-                            <select th:field="*{sala}" class="form-control" required>
-                                <th:block th:each="sala : ${salaList}">
-                                    <option th:text="${sala.nome}" th:value="${sala.id}" />
-                                </th:block>
-                            </select>
+                    <label for="nomeLab">Digite o nome do laboratório</label>
+                    <select class="form-control">
+                        <option th:each="sala : ${salaList}" th:value="${sala.id}" th:text="${sala.nome}"></option>
+                    </select>
+
+                    <br><br>
+
+                    <div class="form-group-row">
+                        <label class="col-form-label" for="permissaoAcesso">Permitir acesso</label>
+                        <div class="mb-3 form-check form-switch">
+                            <input class="form-check-input" th:checked="${verificacao}" type="checkbox" role="switch" id="permissaoAcesso" checked>
                         </div>
-                    </div>
-
-                    <!--<label for="datalistaUsuarios" class="form-label">Informe o usuario</label>
-                    <input class="mb-3 form-control" list="usuariosLista" id="datalistaUsuarios" placeholder="Digite o login">
-                    <datalist id="usuariosLista">
-                        <option th:each="usuario : ${usuarioList}" th:label="${usuario.login}" th:value="${usuario.id}">
-                    </datalist>-->
-
-                    <label class="form-label" for="permissaoAcesso">Permitir acesso</label>
-                    <div class="mb-3 form-check form-switch">
-                        <input class="mb-3 form-check-input" th:checked="${verificacao}" type="checkbox" role="switch" id="permissaoAcesso" checked>
                     </div>
 
                     <button class="mb-3 w-100 btn btn-lg btn-danger teste" type="submit">Criar</button>

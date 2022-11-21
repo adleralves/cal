@@ -7,6 +7,7 @@ import com.adler.apical.domain.repository.AcessosRepository;
 import com.adler.apical.domain.repository.SalaRepository;
 import com.adler.apical.domain.repository.UsuarioRepository;
 import com.adler.apical.domain.service.AcessoService;
+import com.adler.apical.domain.service.UsuarioService;
 import java.util.List;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,7 +47,7 @@ public class AcessosController {
     private AcessoService acessoService;
     
     @Autowired
-    private AcessoService usuarioService;
+    private UsuarioService usuarioService;
 
     @GetMapping("/acessos")
     public List<Acessos> list() {
@@ -117,12 +118,11 @@ public class AcessosController {
         return mv;
     }
 
-    
-    @PostMapping("/criarAcesso")
+    @PostMapping("criarAcesso")
     public ModelAndView criarAcesso(Acessos acessos) {
         ModelAndView mv = new ModelAndView();
         mv.setViewName("redirect:admin");
-        acessosRepository.save(acessos);
+        acessoService.salvar(acessos);
         return mv;
     }
 }

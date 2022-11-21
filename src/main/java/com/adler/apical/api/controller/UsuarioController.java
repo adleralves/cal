@@ -108,5 +108,5 @@ public class UsuarioController {
         mv.setViewName("redirect:newUsuario");
         usuarioRepository.save(usuario);
         return mv;
-    }
+    }   
 }
