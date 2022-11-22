@@ -21,15 +21,15 @@
             <div class="d-flex justify-content-center">
                 <form class="form-signin w-50" method="POST" th:action="criarAcesso" th:object="${acessos}">
                     
-                    <label>Digite o nome do usuario</label>
-                    <select class="form-control">
+                    <label>Digite o nome do usuario:</label>
+                    <select th:field="*{usuario}" class="form-control">
                         <option th:each="usuario : ${usuarioList}" th:value="${usuario.id}" th:text="${usuario.login}"></option>
                     </select>
 
                     <br><br>
 
-                    <label for="nomeLab">Digite o nome do laboratório</label>
-                    <select class="form-control">
+                    <label>Digite o nome do laboratório:</label>
+                    <select th:field="*{sala}" class="form-control">
                         <option th:each="sala : ${salaList}" th:value="${sala.id}" th:text="${sala.nome}"></option>
                     </select>
 
@@ -38,7 +38,7 @@
                     <div class="form-group-row">
                         <label class="col-form-label" for="permissaoAcesso">Permitir acesso</label>
                         <div class="mb-3 form-check form-switch">
-                            <input class="form-check-input" th:checked="${verificacao}" type="checkbox" role="switch" id="permissaoAcesso" checked>
+                            <input class="form-check-input" th:checked="${verificacao}" type="checkbox" role="switch" id="permissaoAcesso">
                         </div>
                     </div>
 
