@@ -22,14 +22,14 @@
                         <option th:each="usuario : ${usuarioList}" th:value="${usuario.id}" th:text="${usuario.login}"></option>
                     </select>
 
-                    <br><br>
+                    <br>
 
                     <label>Digite o nome do laboratório:</label>
                     <select th:field="*{sala}" class="form-control">
                         <option th:each="sala : ${salaList}" th:value="${sala.id}" th:text="${sala.nome}"></option>
                     </select>
 
-                    <br><br>
+                    <br>
 
                     <div class="form-group-row">
                         <label class="col-form-label" for="permissaoAcesso">Permitir acesso?</label>

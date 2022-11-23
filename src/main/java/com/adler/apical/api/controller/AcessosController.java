@@ -99,14 +99,6 @@ public class AcessosController {
         return mv;
     }
 
-    /*
-    @GetMapping("/newAcesso")
-    public ModelAndView listarAcessoTeste(@ModelAttribute Acessos acessos) {
-        ModelAndView mv = new ModelAndView("forms/acessoForm");
-        mv.addObject("acessos", acessos);
-        return mv;
-    }
-*/
 
     @RequestMapping(value = "/newAcesso", method = { RequestMethod.GET, RequestMethod.POST})
     public ModelAndView listarAcesso(@ModelAttribute Acessos acessos, @ModelAttribute Usuario usuario, @ModelAttribute Sala sala) {
@@ -124,6 +116,23 @@ public class AcessosController {
         ModelAndView mv = new ModelAndView();
         mv.setViewName("redirect:admin");
         acessoService.salvar(acessos);
+        return mv;
+    }
+    
+    @PostMapping("editarAcesso/{id}")
+    public ModelAndView editarAcesso(@PathVariable("id") Long id) {
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("forms/acessoEdit");
+        Acessos acesso = acessosRepository.getById(id);
+        mv.addObject("acesso", acesso);
+        return mv;
+    }
+    
+    @PostMapping("/editar")
+    public ModelAndView alterar(Acessos acesso) {
+        ModelAndView mv = new ModelAndView();
+        acessoService.salvar(acesso);
+        mv.setViewName("redirect:admin");
         return mv;
     }
 }
