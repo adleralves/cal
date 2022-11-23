@@ -4,10 +4,6 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link
-            href="//netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-            rel="stylesheet"
-            />
         <link rel="stylesheet" href="/assets/usuarioF_style.css" />
         <title>Novo acesso</title>
     </head>
@@ -37,14 +33,14 @@
 
                     <div class="form-group-row">
                         <label class="col-form-label" for="permissaoAcesso">Permitir acesso?</label>
-                        <div class="form-check form-switch">
+                        <div class="m-2 form-check form-switch">
                             <input class="form-check-input" th:field="*{verificacao}" th:checked="${flag} ? 'checked'" type="checkbox" role="switch" id="permissaoAcesso">
                         </div>
                     </div>
                     
                     <br>
 
-                    <button class="mb-3 w-100 btn btn-lg btn-danger teste" type="submit">Criar</button>
+                    <button class="mb-3 w-100 btn btn-danger teste" type="submit">Criar</button>
                 </form>
             </div>
         </div>

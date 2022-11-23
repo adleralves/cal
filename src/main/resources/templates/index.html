@@ -4,10 +4,6 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link
-            href="//netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-            rel="stylesheet"
-            />
         <link rel="stylesheet" href="/assets/index_style.css" />
         <title>Pagina Principal</title>
     </head>
@@ -18,14 +14,14 @@
                 <h1 class="mr-auto">Acessos</h1>
                 <div class="ms-auto">
                     <a th:href="@{/newAcesso}">
-                        <button type="button" class="btn btn-success btn-lg">Novo acesso</button>
+                        <button type="button" class="btn btn-success">Novo acesso</button>
                     </a>
                 </div>
             </div>
             <table class="table table-borderless table-striped">
                 <thead>
                     <tr>
-                        <th scope="col"><span class="glyphicon glyphicon-list"></span></th>
+                        <th scope="col"><i class="fa-solid fa-list"></i></th>
                         <th scope="col">ID</th>
                         <th scope="col">Login</th>
                         <th scope="col">Laboratorio</th>
