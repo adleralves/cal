@@ -36,11 +36,13 @@
                     <br><br>
 
                     <div class="form-group-row">
-                        <label class="col-form-label" for="permissaoAcesso">Permitir acesso</label>
-                        <div class="mb-3 form-check form-switch">
-                            <input class="form-check-input" th:checked="${verificacao}" type="checkbox" role="switch" id="permissaoAcesso">
+                        <label class="col-form-label" for="permissaoAcesso">Permitir acesso?</label>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" th:field="*{verificacao}" th:checked="${flag} ? 'checked'" type="checkbox" role="switch" id="permissaoAcesso">
                         </div>
                     </div>
+                    
+                    <br>
 
                     <button class="mb-3 w-100 btn btn-lg btn-danger teste" type="submit">Criar</button>
                 </form>
