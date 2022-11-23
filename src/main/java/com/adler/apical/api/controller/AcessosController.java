@@ -135,4 +135,10 @@ public class AcessosController {
         mv.setViewName("redirect:admin");
         return mv;
     }
+    
+    @GetMapping("/excluir/{id}")
+    public String excluirAcesso(@PathVariable("id") Long id) {
+        acessoService.excluir(id);
+        return "redirect:/admin";
+    }
 }
