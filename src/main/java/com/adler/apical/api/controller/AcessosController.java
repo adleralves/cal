@@ -9,10 +9,12 @@ import com.adler.apical.domain.repository.UsuarioRepository;
 import com.adler.apical.domain.service.AcessoService;
 import com.adler.apical.domain.service.UsuarioService;
 import java.util.List;
+import java.util.Optional;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -119,26 +121,28 @@ public class AcessosController {
         return mv;
     }
     
-    @PostMapping("editarAcesso/{id}")
+    @GetMapping("editAcesso/{id}")
     public ModelAndView editarAcesso(@PathVariable("id") Long id) {
         ModelAndView mv = new ModelAndView();
         mv.setViewName("forms/acessoEdit");
-        Acessos acesso = acessosRepository.getById(id);
+        Acessos acesso = acessosRepository.getReferenceById(id);
         mv.addObject("acesso", acesso);
         return mv;
     }
     
     @PostMapping("/editar")
-    public ModelAndView alterar(Acessos acesso) {
+    public ModelAndView editar(Acessos acesso) {
         ModelAndView mv = new ModelAndView();
-        acessoService.salvar(acesso);
+        acessosRepository.save(acesso);
         mv.setViewName("redirect:admin");
         return mv;
     }
     
+    /*
     @GetMapping("/excluir/{id}")
     public String excluirAcesso(@PathVariable("id") Long id) {
-        acessoService.excluir(id);
-        return "redirect:/admin";
+        this.acessosRepository.deleteById(id);
+        return "redirect:/";
     }
+    */
 }

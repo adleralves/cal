@@ -18,7 +18,7 @@
                     </a>
                 </div>
             </div>
-            <table class="table table-borderless table-striped">
+            <table class="table">
                 <thead>
                     <tr>
                         <th scope="col"><i class="fa-solid fa-list"></i></th>
@@ -34,8 +34,8 @@
                         th:if="${acessos.verificacao} == true"
                         >
                         <td>
-                            <a th:href="@{excluir/{id}(id=${acessos.id})}"><i class="fa-solid fa-trash"></i></a>
-                            <a><i class="fa-solid fa-pen-to-square"></i></a>
+                            <!--<a th:href="@{/excluir/{id}(id=${acessos.id})}"><i class="fa-solid fa-trash"></i></a>-->
+                            <a th:href="@{/editAcesso/{id}(id=${acessos.id})}"><i class="fa-solid fa-pen-to-square"></i></a>
                         </td>
                         <td th:text="${acessos.usuario.id}"></td>
                         <td th:text="${acessos.usuario.login}"></td>
