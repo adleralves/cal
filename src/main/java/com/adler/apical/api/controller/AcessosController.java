@@ -9,12 +9,10 @@ import com.adler.apical.domain.repository.UsuarioRepository;
 import com.adler.apical.domain.service.AcessoService;
 import com.adler.apical.domain.service.UsuarioService;
 import java.util.List;
-import java.util.Optional;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -41,13 +39,13 @@ public class AcessosController {
 
     @Autowired
     private UsuarioRepository usuarioRepository;
-    
+
     @Autowired
     private SalaRepository salaRepository;
 
     @Autowired
     private AcessoService acessoService;
-    
+
     @Autowired
     private UsuarioService usuarioService;
 
@@ -101,8 +99,7 @@ public class AcessosController {
         return mv;
     }
 
-
-    @RequestMapping(value = "/newAcesso", method = { RequestMethod.GET, RequestMethod.POST})
+    @RequestMapping(value = "/newAcesso", method = {RequestMethod.GET, RequestMethod.POST})
     public ModelAndView listarAcesso(@ModelAttribute Acessos acessos, @ModelAttribute Usuario usuario, @ModelAttribute Sala sala) {
         ModelAndView mv = new ModelAndView("forms/acessoForm");
         mv.addObject("usuario", usuario);
@@ -114,35 +111,35 @@ public class AcessosController {
     }
 
     @PostMapping("criarAcesso")
-    public ModelAndView criarAcesso(Acessos acessos) {
+    public ModelAndView criarAcesso(@ModelAttribute Acessos acessos) {
         ModelAndView mv = new ModelAndView();
         mv.setViewName("redirect:admin");
         acessoService.salvar(acessos);
         return mv;
     }
-    
+
     @GetMapping("editAcesso/{id}")
     public ModelAndView editarAcesso(@PathVariable("id") Long id) {
         ModelAndView mv = new ModelAndView();
         mv.setViewName("forms/acessoEdit");
-        Acessos acesso = acessosRepository.getReferenceById(id);
-        mv.addObject("acesso", acesso);
+        Acessos acessos = acessosRepository.getOne(id);
+        mv.addObject("acessos", acessos);
         return mv;
     }
-    
-    @PostMapping("/editar")
+
+    @PostMapping("editar")
     public ModelAndView editar(Acessos acesso) {
         ModelAndView mv = new ModelAndView();
         acessosRepository.save(acesso);
         mv.setViewName("redirect:admin");
         return mv;
     }
-    
+
     /*
     @GetMapping("/excluir/{id}")
     public String excluirAcesso(@PathVariable("id") Long id) {
         this.acessosRepository.deleteById(id);
         return "redirect:/";
     }
-    */
+     */
 }

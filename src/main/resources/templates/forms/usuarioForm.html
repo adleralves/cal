@@ -4,7 +4,6 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="/assets/usuarioF_style.css" />
         <title>Novo usuário</title>
     </head>
     <body>
@@ -23,7 +22,7 @@
                         class="form-signin w-50 was-validated"
                         >
                         <div class="mb-3 form-group">
-                            <label for="loginUsuario">Digite o novo login</label>
+                            <label for="loginUsuario">Digite o login:</label>
                             <input
                                 th:field="*{login}"
                                 type="text"
@@ -36,7 +35,7 @@
                                 />
                         </div>
                         <div class="mb-3 form-group">
-                            <label for="senhaUsuario">Digite a senha</label>
+                            <label for="senhaUsuario">Digite a senha:</label>
                             <input
                                 th:field="*{senha}"
                                 type="password"

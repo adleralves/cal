@@ -4,32 +4,35 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="/assets/usuarioF_style.css" />
         <title>Novo acesso</title>
     </head>
     <body>
         <div th:replace="fragmentos"></div>
         <div class="container">
             <div class="border-bottom">
-                <h1>Novo acesso</h1>
+                <h1>Editar acesso</h1>
             </div>
             <br>
             <div class="d-flex justify-content-center">
-                <form class="form-signin w-50" method="POST" th:action="editar" th:object="${acessos}">
-                    
-                    <input type="hidden" th:field="*{id}"}>
-                                       
+                <form class="form-signin w-50" method="post" th:action="criarAcesso" th:object="${acessos}">
+
+                    <input type="hidden" th:field="*{id}">
+
+                    <!--<input class="form-control" type="text" th:value="${acessos.usuario.id}" th:text="${acessos.usuario.login}" aria-label="Disabled input example" disabled readonly>-->
+
                     <label>Usuario:</label>
-                    <select th:field="*{usuario}" class="form-control">
-                        <option th:each="usuario : ${usuarioList}" th:value="${usuario.id}" th:text="${usuario.login}"></option>
+                    <select disabled th:field="*{usuario}" class="form-control">
+                        <option th:value="${acessos.usuario.id}" th:text="${acessos.usuario.login}"></option>
                     </select>
                     <!--<input th:field="*{usuario}" class="form-control">-->
 
                     <br>
 
+                    <!--<input class="form-control" type="text" value="Disabled readonly input" aria-label="Disabled input example" disabled readonly>-->
+
                     <label>Laboratório:</label>
-                    <select th:field="*{sala}" class="form-control">
-                        <option th:each="sala : ${salaList}" th:value="${sala.id}" th:text="${sala.nome}"></option>
+                    <select disabled th:field="*{sala}" class="form-control">
+                        <option th:value="${acessos.sala.id}" th:text="${acessos.sala.nome}"></option>
                     </select>
                     <!--<input th:field="*{sala}" class="form-control">-->
 
@@ -38,10 +41,10 @@
                     <div class="form-group-row">
                         <label class="col-form-label" for="permissaoAcesso">Permitir acesso?</label>
                         <div class="m-2 form-check form-switch">
-                            <input class="form-check-input" th:field="*{verificacao}" th:checked="${flag} ? 'checked'" type="checkbox" role="switch" id="permissaoAcesso">
+                            <input class="form-check-input" th:value="*{verificacao}" th:checked="${flag} ? 'checked'" type="checkbox" role="switch" id="permissaoAcesso">
                         </div>
                     </div>
-                    
+
                     <br>
 
                     <button class="mb-3 w-100 btn btn-danger teste" type="submit">Editar</button>
