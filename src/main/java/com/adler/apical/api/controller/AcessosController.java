@@ -127,11 +127,11 @@ public class AcessosController {
         return mv;
     }
 
-    @PostMapping("editar")
+    @PutMapping("editar")
     public ModelAndView editar(Acessos acesso) {
         ModelAndView mv = new ModelAndView();
         acessosRepository.save(acesso);
-        mv.setViewName("redirect:admin");
+        mv.setViewName("redirect:/admin");
         return mv;
     }
 

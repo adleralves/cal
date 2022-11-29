@@ -14,34 +14,28 @@
             </div>
             <br>
             <div class="d-flex justify-content-center">
-                <form class="form-signin w-50" method="post" th:action="criarAcesso" th:object="${acessos}">
+                <form class="form-signin w-50" method="POST" th:action="criarAcesso" th:object="${acessos}">
 
-                    <input type="hidden" th:field="*{id}">
-
-                    <!--<input class="form-control" type="text" th:value="${acessos.usuario.id}" th:text="${acessos.usuario.login}" aria-label="Disabled input example" disabled readonly>-->
+                    <input type="hidden" th:field="*{id}" th:value="*{id}">
 
                     <label>Usuario:</label>
                     <select disabled th:field="*{usuario}" class="form-control">
                         <option th:value="${acessos.usuario.id}" th:text="${acessos.usuario.login}"></option>
                     </select>
-                    <!--<input th:field="*{usuario}" class="form-control">-->
 
                     <br>
-
-                    <!--<input class="form-control" type="text" value="Disabled readonly input" aria-label="Disabled input example" disabled readonly>-->
 
                     <label>Laboratório:</label>
                     <select disabled th:field="*{sala}" class="form-control">
                         <option th:value="${acessos.sala.id}" th:text="${acessos.sala.nome}"></option>
                     </select>
-                    <!--<input th:field="*{sala}" class="form-control">-->
 
                     <br>
 
                     <div class="form-group-row">
                         <label class="col-form-label" for="permissaoAcesso">Permitir acesso?</label>
                         <div class="m-2 form-check form-switch">
-                            <input class="form-check-input" th:value="*{verificacao}" th:checked="${flag} ? 'checked'" type="checkbox" role="switch" id="permissaoAcesso">
+                            <input class="form-check-input" th:field="*{verificacao}" th:value="*{verificacao}" th:checked="${flag} ? 'checked'" type="checkbox" role="switch" id="permissaoAcesso">
                         </div>
                     </div>
 
