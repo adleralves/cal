@@ -13,6 +13,8 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -118,7 +120,7 @@ public class AcessosController {
         return mv;
     }
 
-    @GetMapping("editAcesso/{id}")
+    @GetMapping("/editAcesso/{id}")
     public ModelAndView editarAcesso(@PathVariable("id") Long id) {
         ModelAndView mv = new ModelAndView();
         mv.setViewName("forms/acessoEdit");
@@ -127,8 +129,8 @@ public class AcessosController {
         return mv;
     }
 
-    @PutMapping("editar")
-    public ModelAndView editar(Acessos acessos) {
+    @PutMapping("/editAcesso")
+    public ModelAndView editar(@RequestBody Acessos acessos) {
         ModelAndView mv = new ModelAndView();
         acessosRepository.save(acessos);
         mv.setViewName("redirect:/admin");
