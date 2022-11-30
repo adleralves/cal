@@ -15,7 +15,7 @@
             <br>
             <div class="row">
                 <div class="col d-flex justify-content-end">
-                    <form method="post" action="criarLab" th:object="${sala}" class="form-signin w-50 was-validated">
+                    <form method="post" action="criarLab" th:object="${sala}" class="form-signin w-75 was-validated">
                         <div class="mb-3 form-group">
                             <label for="nomeLab">Informe o nome do laboratório: </label>
                             <input th:field="*{nome}" type="text" class="form-control" id="nomeLab" placeholder="Laboratório" aria-label="Laboratório" aria-describedby="basic-addon1" required>
@@ -24,7 +24,7 @@
                     </form>
                 </div>
                 <div class="col d-flex">
-                    <table class="table w-50 ">
+                    <table class="table w-75 ">
                         <thead>
                             <tr>
                                 <th scope="col">Nome</th>

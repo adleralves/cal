@@ -14,23 +14,23 @@ import javax.persistence.ManyToOne;
  */
 @Entity
 public class Acessos {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
+
     private boolean verificacao;
-    
+
     @ManyToOne
     @JoinColumn(name = "usuario_id", referencedColumnName = "id")
     private Usuario usuario;
-    
+
     @ManyToOne
     @JoinColumn(name = "sala_id", referencedColumnName = "id")
     private Sala sala;
 
     public Acessos() {
-        
+
     }
 
     public Acessos(Long id, Sala sala, Usuario usuario, boolean verificacao) {
@@ -96,6 +96,5 @@ public class Acessos {
         }
         return true;
     }
-    
-    
+
 }

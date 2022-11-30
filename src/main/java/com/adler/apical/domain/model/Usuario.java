@@ -7,21 +7,20 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.Size;
 
-
 /**
  *
  * @author adler
  */
 @Entity
 public class Usuario {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
+
     @Size(max = 20)
     private String login;
-    
+
     @Size(max = 20)
     private String senha;
 
@@ -82,6 +81,5 @@ public class Usuario {
         }
         return true;
     }
-    
-    
+
 }

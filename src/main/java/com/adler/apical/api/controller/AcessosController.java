@@ -122,24 +122,16 @@ public class AcessosController {
     public ModelAndView editarAcesso(@PathVariable("id") Long id) {
         ModelAndView mv = new ModelAndView();
         mv.setViewName("forms/acessoEdit");
-        Acessos acessos = acessosRepository.getOne(id);
+        Acessos acessos = acessosRepository.getReferenceById(id);
         mv.addObject("acessos", acessos);
         return mv;
     }
 
     @PutMapping("editar")
-    public ModelAndView editar(Acessos acesso) {
+    public ModelAndView editar(Acessos acessos) {
         ModelAndView mv = new ModelAndView();
-        acessosRepository.save(acesso);
+        acessosRepository.save(acessos);
         mv.setViewName("redirect:/admin");
         return mv;
     }
-
-    /*
-    @GetMapping("/excluir/{id}")
-    public String excluirAcesso(@PathVariable("id") Long id) {
-        this.acessosRepository.deleteById(id);
-        return "redirect:/";
-    }
-     */
 }

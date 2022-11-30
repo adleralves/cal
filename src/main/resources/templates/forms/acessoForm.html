@@ -15,7 +15,7 @@
             <br>
             <div class="d-flex justify-content-center">
                 <form class="form-signin w-50" method="POST" th:action="criarAcesso" th:object="${acessos}">
-                    
+
                     <label>Digite o nome do usuario:</label>
                     <select th:field="*{usuario}" class="form-control">
                         <option th:each="usuario : ${usuarioList}" th:value="${usuario.id}" th:text="${usuario.login}"></option>
@@ -36,7 +36,7 @@
                             <input class="form-check-input" th:field="*{verificacao}" th:checked="${flag} ? 'checked'" type="checkbox" role="switch" id="permissaoAcesso">
                         </div>
                     </div>
-                    
+
                     <br>
 
                     <button class="mb-3 w-100 btn btn-danger teste" type="submit">Criar</button>

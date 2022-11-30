@@ -23,8 +23,9 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
- * Este controller é feito apenas para criar, editar e deletar contas do
- * banco de dados
+ * Este controller é feito apenas para criar, editar e deletar contas do banco
+ * de dados
+ *
  * @author adler
  */
 @RestController
@@ -61,17 +62,17 @@ public class UsuarioController {
     public Usuario adicionar(@Valid @RequestBody Usuario usuario) {
         return usuarioService.salvar(usuario);
     }
-    
+
     // Endpoint para editar usuario
     @PutMapping("/usuarios/{usuarioID}")
     public ResponseEntity<Usuario> editar(@Valid @PathVariable Long usuarioID,
-                                          @RequestBody Usuario usuario) {
-        
+            @RequestBody Usuario usuario) {
+
         //Verifica se o usuario existe
-        if(!usuarioRepository.existsById(usuarioID)) {
+        if (!usuarioRepository.existsById(usuarioID)) {
             return ResponseEntity.notFound().build();
         }
-        
+
         usuario.setId(usuarioID);
         usuario = usuarioService.salvar(usuario);
         return ResponseEntity.ok(usuario);
@@ -80,7 +81,7 @@ public class UsuarioController {
     // Endpoint para excluir usuario
     @DeleteMapping("/usuarios/{usuarioID}")
     public ResponseEntity<Void> excluir(@PathVariable Long usuarioID) {
-        
+
         //Verifica se usuario existe ou não
         if (!usuarioRepository.existsById(usuarioID)) {
             return ResponseEntity.notFound().build();
@@ -89,12 +90,11 @@ public class UsuarioController {
         usuarioService.excluir(usuarioID);
         return ResponseEntity.noContent().build();
     }
-    
+
     /*
     Enviando e trabalhando dados com o Thymeleaf/HTML
-    */
-    
-    @RequestMapping(value = "/newUsuario", method = { RequestMethod.GET, RequestMethod.POST})
+     */
+    @RequestMapping(value = "/newUsuario", method = {RequestMethod.GET, RequestMethod.POST})
     public ModelAndView listarUsuario(@ModelAttribute Usuario usuario) {
         ModelAndView mv = new ModelAndView("forms/usuarioForm");
         mv.addObject("usuario", usuario);
@@ -108,5 +108,5 @@ public class UsuarioController {
         mv.setViewName("redirect:newUsuario");
         usuarioRepository.save(usuario);
         return mv;
-    }   
+    }
 }

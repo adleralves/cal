@@ -11,21 +11,20 @@ import javax.validation.constraints.Size;
  *
  * @author adler
  */
-
 @Entity
 public class Sala {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
+
     @Size(max = 10)
     private String nome;
-    
+
     private boolean estado;
-    
+
     public Sala() {
-        
+
     }
 
     public Sala(Long id, String nome, boolean estado) {
@@ -82,6 +81,5 @@ public class Sala {
         }
         return true;
     }
-    
-    
+
 }

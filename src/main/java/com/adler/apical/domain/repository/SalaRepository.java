@@ -7,6 +7,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
  *
  * @author adler
  */
-public interface SalaRepository extends JpaRepository<Sala, Long>{
-    
+public interface SalaRepository extends JpaRepository<Sala, Long> {
+
 }

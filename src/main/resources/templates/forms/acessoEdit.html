@@ -14,9 +14,12 @@
             </div>
             <br>
             <div class="d-flex justify-content-center">
-                <form class="form-signin w-50" method="POST" th:action="criarAcesso" th:object="${acessos}">
+                <form class="form-signin w-50" method="PUT" th:action="editar" th:object="${acessos}">
 
-                    <input type="hidden" th:field="*{id}" th:value="*{id}">
+                    <label>ID</label>
+                    <input disabled class="form-control" th:value="*{id}">
+
+                    <br>
 
                     <label>Usuario:</label>
                     <select disabled th:field="*{usuario}" class="form-control">

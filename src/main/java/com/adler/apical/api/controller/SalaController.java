@@ -23,14 +23,15 @@ import org.springframework.web.servlet.ModelAndView;
 /**
  * Este controller é feito apenas para o hardware receber o estado da sala, se
  * esta aberta ou fechada
+ *
  * @author adler
  */
 @RestController
 public class SalaController {
-    
+
     @Autowired
     private SalaRepository salaRepository;
-    
+
     //Busca a sala pelo ID
     @GetMapping("/sala/{salaID}")
     public ResponseEntity<Sala> listar(@PathVariable Long salaID) {
@@ -43,22 +44,22 @@ public class SalaController {
             return ResponseEntity.notFound().build();
         }
     }
-    
+
     @PostMapping("/sala/criar")
     @ResponseStatus(HttpStatus.CREATED)
     public Sala adicionar(@Valid @RequestBody Sala sala) {
         return salaRepository.save(sala);
     }
-    
+
     @GetMapping("/salas")
     public List<Sala> listar() {
         return salaRepository.findAll();
     }
-    
+
     // Endpoint para excluir sala
     @DeleteMapping("/sala/{salaID}")
     public ResponseEntity<Void> excluir(@PathVariable Long salaID) {
-        
+
         //Verifica se usuario existe ou não
         if (!salaRepository.existsById(salaID)) {
             return ResponseEntity.notFound().build();
@@ -67,12 +68,11 @@ public class SalaController {
         salaRepository.deleteById(salaID);
         return ResponseEntity.noContent().build();
     }
-    
+
     /*
     Enviando e trabalhando dados com o Thymeleaf/HTML
-    */
-    
-    @RequestMapping(value = "/newLab", method = { RequestMethod.GET, RequestMethod.POST})
+     */
+    @RequestMapping(value = "/newLab", method = {RequestMethod.GET, RequestMethod.POST})
     public ModelAndView listarLab(@ModelAttribute Sala sala) {
         ModelAndView mv = new ModelAndView("forms/labForm");
         mv.addObject("sala", sala);
@@ -88,4 +88,3 @@ public class SalaController {
         return mv;
     }
 }
-
