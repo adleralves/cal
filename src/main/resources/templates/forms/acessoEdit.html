@@ -14,22 +14,27 @@
             </div>
             <br>
             <div class="d-flex justify-content-center">
-                <form class="form-signin w-50" _method="post" th:action="editAcesso" th:object="${acessos}">
-
-                    <label>ID</label>
-                    <input disabled class="form-control" th:value="*{id}">
-
+                <form class="form-signin w-50" method="POST" th:action="criarAcesso" th:object="${acessos}">
+                    
+                    <!--<input class="form-control" th:field="*{id}">-->
+                    
+                    <label>Informe o ID do acesso:</label>
+                    <select th:field="*{id}" class="form-control">
+                        <option th:each="acessos : ${acessoList}" th:value="${acessos.id}" th:text="${acessos.id}" ></option>
+                    </select>
+                    
                     <br>
-                    <label>Usuario:</label>
-                    <select disabled th:field="*{usuario}" class="form-control">
-                        <option th:value="${acessos.usuario.id}" th:text="${acessos.usuario.login}"></option>
+
+                    <label>Digite o nome do usuario:</label>
+                    <select th:field="*{usuario}" class="form-control">
+                        <option th:each="usuario : ${usuarioList}" th:value="${usuario.id}" th:text="${usuario.login}"></option>
                     </select>
 
                     <br>
 
-                    <label>Laboratório:</label>
-                    <select disabled th:field="*{sala}" class="form-control">
-                        <option th:value="${acessos.sala.id}" th:text="${acessos.sala.nome}"></option>
+                    <label>Digite o nome do laboratório:</label>
+                    <select th:field="*{sala}" class="form-control">
+                        <option th:each="sala : ${salaList}" th:value="${sala.id}" th:text="${sala.nome}"></option>
                     </select>
 
                     <br>
@@ -37,7 +42,7 @@
                     <div class="form-group-row">
                         <label class="col-form-label" for="permissaoAcesso">Permitir acesso?</label>
                         <div class="m-2 form-check form-switch">
-                            <input class="form-check-input" th:field="*{verificacao}" th:value="*{verificacao}" th:checked="${flag} ? 'checked'" type="checkbox" role="switch" id="permissaoAcesso">
+                            <input class="form-check-input" th:field="*{verificacao}" th:checked="${flag} ? 'checked'" type="checkbox" role="switch" id="permissaoAcesso">
                         </div>
                     </div>
 

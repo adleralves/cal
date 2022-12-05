@@ -120,20 +120,15 @@ public class AcessosController {
         return mv;
     }
 
-    @GetMapping("/editAcesso/{id}")
-    public ModelAndView editarAcesso(@PathVariable("id") Long id) {
-        ModelAndView mv = new ModelAndView();
-        mv.setViewName("forms/acessoEdit");
-        Acessos acessos = acessosRepository.getReferenceById(id);
-        mv.addObject("acessos", acessos);
-        return mv;
-    }
-
-    @PutMapping("/editAcesso")
-    public ModelAndView editar(@RequestBody Acessos acessos) {
-        ModelAndView mv = new ModelAndView();
-        acessosRepository.save(acessos);
-        mv.setViewName("redirect:/admin");
+    @RequestMapping(value = "/editAcesso", method = {RequestMethod.GET, RequestMethod.POST})
+    public ModelAndView editarAcesso(@ModelAttribute Acessos acessos, @ModelAttribute Usuario usuario, @ModelAttribute Sala sala) {
+        ModelAndView mv = new ModelAndView("forms/acessoEdit");
+        mv.addObject("usuario", usuario);
+        mv.addObject("usuarioList", usuarioRepository.findAll());
+        mv.addObject("sala", sala);
+        mv.addObject("salaList", salaRepository.findAll());
+        mv.addObject("acesso", acessos);
+        mv.addObject("acessoList", acessosRepository.findAll());
         return mv;
     }
 }
