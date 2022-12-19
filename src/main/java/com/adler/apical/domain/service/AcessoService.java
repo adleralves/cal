@@ -2,9 +2,7 @@ package com.adler.apical.domain.service;
 
 import com.adler.apical.domain.model.Acessos;
 import com.adler.apical.domain.repository.AcessosRepository;
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 /**
@@ -26,9 +24,4 @@ public class AcessoService {
     public void excluir(Long acessoId) {
         acessosRepository.deleteById(acessoId);
     }
-
-    public List<Acessos> acessosWithSorting(String field) {
-        return acessosRepository.findAll(Sort.by(Sort.Direction.ASC, field));
-    }
-
 }

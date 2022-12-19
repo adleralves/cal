@@ -97,7 +97,9 @@ public class AcessosController {
     }
 
     @RequestMapping(value = "/newAcesso", method = {RequestMethod.GET, RequestMethod.POST})
-    public ModelAndView listarAcesso(@ModelAttribute Acessos acessos, @ModelAttribute Usuario usuario, @ModelAttribute Sala sala) {
+    public ModelAndView listarAcesso(@ModelAttribute Acessos acessos,
+                                     @ModelAttribute Usuario usuario,
+                                     @ModelAttribute Sala sala) {
         ModelAndView mv = new ModelAndView("forms/acessoForm");
         mv.addObject("usuario", usuario);
         mv.addObject("usuarioList", usuarioRepository.findAll());
@@ -116,7 +118,9 @@ public class AcessosController {
     }
 
     @RequestMapping(value = "/editAcesso", method = {RequestMethod.GET, RequestMethod.POST})
-    public ModelAndView editarAcesso(@ModelAttribute Acessos acessos, @ModelAttribute Usuario usuario, @ModelAttribute Sala sala) {
+    public ModelAndView editarAcesso(@ModelAttribute Acessos acessos,
+                                     @ModelAttribute Usuario usuario,
+                                     @ModelAttribute Sala sala) {
         ModelAndView mv = new ModelAndView("forms/acessoEdit");
         mv.addObject("usuario", usuario);
         mv.addObject("usuarioList", usuarioRepository.findAll());

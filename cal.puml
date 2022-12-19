@@ -1,21 +1,19 @@
 @startuml
 class com.adler.apical.ApiCalApplication
 class com.adler.apical.api.controller.AcessosController {
-    +List<Acessos> list()
-    +Acessos criar(@RequestBody Acessos acesso)
-    +ResponseEntity<Acessos> editar(@Valid @PathVariable Long acessoID)
-    +ResponseEntity<Void> excluir(@PathVariable Long acessoID)
+    +public ModelAndView listarAcessos()
+    +public ModelAndView listarAcesso()
+    +public ModelAndView criarAcesso()
+    +public ModelAndView editarAcesso()
 }
 class com.adler.apical.api.controller.SalaController {
-    +ResponseEntity<Sala> listar(@PathVariable Long salaID)
+    +public ModelAndView listarLab()
+    +public ModelAndView criarLab()
 
 }
 class com.adler.apical.api.controller.UsuarioController {
-    +public List<Usuario> listar()
-    +ResponseEntity<Usuario> buscar(@PathVariable Long usuarioID)
-    +Usuario adicionar(@Valid @RequestBody Usuario usuario)
-    +ResponseEntity<Usuario> editar(@Valid @PathVariable Long usuarioID)
-    +ResponseEntity<Void> excluir(@PathVariable Long usuarioID)
+    +public ModelAndView listarUsuario()
+    +public ModelAndView criarUsuario()
 }
 class com.adler.apical.domain.model.Acessos {
     -long id
