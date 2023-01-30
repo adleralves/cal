@@ -11,11 +11,6 @@ create table usuario (
     primary key (id)
 );
 
-insert into usuario(login, senha) values
-("adler", "123"),
-("dani", "123"),
-("brunos", "123");
-
 # Tabela Sala
 
 create table sala(
@@ -25,10 +20,6 @@ create table sala(
     primary key(id)
 );
 
-insert into sala(nome, estado) values
-("61", false),
-("62", false),
-("64", false);
 
 # Tabela Acessos
 
@@ -42,5 +33,3 @@ create table acessos(
     foreign key fk_sala(sala_id) references sala(id)
 );
 
-insert into acessos(verificacao, usuario_id, sala_id) values
-(true, 1, 3)
